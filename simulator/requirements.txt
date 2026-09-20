@@ -1,1 +1,3 @@
-"requests\nwebsocket-client\npydantic" 
+requests 
+websocket-client 
+pydantic 

@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "VehicleTelemetryPacket",
+  "type": "object",
+  "properties": {
+    "vehicle_id": {
+      "type": "integer",
+      "description": "Unique database ID of the vehicle",
+      "example": 1
+    },
+    "vehicle_number": {
+      "type": "string",
+      "description": "Assigned race identifier",
+      "example": "RACER-01"
+    },
+    "latitude": {
+      "type": "number",
+      "minimum": -90.0,
+      "maximum": 90.0,
+      "example": 24.8601
+    },
+    "longitude": {
+      "type": "number",
+      "minimum": -180.0,
+      "maximum": 180.0,
+      "example": 67.0010
+    },
+    "speed_kmh": {
+      "type": "number",
+      "minimum": 0.0,
+      "example": 84.5
+    },
+    "heading": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 360.0,
+      "example": 142.0
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-09-20T13:00:00.000Z"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["READY", "RACING", "FINISHED", "SOS"],
+      "example": "RACING"
+    }
+  },
+  "required": ["vehicle_id", "vehicle_number", "latitude", "longitude", "speed_kmh", "timestamp", "status"]
+}

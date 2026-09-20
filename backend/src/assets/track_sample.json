@@ -1,0 +1,46 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "name": "Desert Track Alpha"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [67.0010, 24.8601],
+            [67.0150, 24.8610],
+            [67.0200, 24.8450],
+            [67.0050, 24.8400],
+            [67.0010, 24.8601]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "checkpoint_order": 1,
+        "name": "Start Line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [67.0012, 24.8600]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "checkpoint_order": 2,
+        "name": "CP1 Desert Dunes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [67.0180, 24.8500]
+      }
+    }
+  ]
+}

@@ -1,21 +1,24 @@
 import { Module } from '@nestjs/common';
-import { createObserveModule } from '@nestjs/observe';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-
-export const { ObserveModule, ObserveInstrument } = createObserveModule();
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { VehiclesModule } from './vehicles/vehicles.module';
+import { TracksModule } from './tracks/tracks.module';
+import { TelemetryGateway } from './telemetry/telemetry.gateway';
 
 @Module({
   imports: [
-    // Distributed tracing, auto-correlated logs, request/job metrics, error
-    // telemetry, alarms, and more — out of the box. Sign up at https://observe.nestjs.com
-    ObserveModule.forRoot({
-      appKey: 'YOUR_APP_KEY',
-      appSecret: 'YOUR_APP_SECRET',
-      serviceId: 'backend',
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: process.env.DB_HOST || 'localhost',
+      port: parseInt(process.env.DB_PORT || '5432', 10),
+      username: process.env.DB_USER || 'rally_user',
+      password: process.env.DB_PASSWORD || 'rally_pass',
+      database: process.env.DB_NAME || 'rally_db',
+      autoLoadEntities: true,
+      synchronize: false,
     }),
+    VehiclesModule,
+    TracksModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  providers: [TelemetryGateway],
 })
 export class AppModule {}
