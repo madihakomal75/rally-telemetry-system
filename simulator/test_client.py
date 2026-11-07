@@ -22,7 +22,7 @@ def connect():
     print(f" Sending telemetry packet: {payload}")
     sio.emit('telemetry:submit', payload)
 
-@sio.on('telemetry:broadcast')
+@sio.on('telemetry:update')
 def on_broadcast(data):
     print(f" Received broadcast echo from NestJS:\n{data}")
     sio.disconnect()

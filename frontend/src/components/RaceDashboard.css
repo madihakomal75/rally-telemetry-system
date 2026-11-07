@@ -1,0 +1,335 @@
+:root {
+  --bg-dark: #0f172a;
+  --card-bg: #1e293b;
+  --border-color: #334155;
+  --accent-amber: #f59e0b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+}
+
+.race-dashboard {
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.race-dashboard__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.race-dashboard__eyebrow {
+  color: var(--accent-amber);
+  font-weight: 700;
+  font-size: 0.875rem;
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+.race-dashboard__header h1 {
+  margin: 0.25rem 0;
+  font-size: 1.75rem;
+}
+
+.race-dashboard__header p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.race-dashboard__connection {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.race-dashboard__connection.is-connected {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.race-dashboard__connection.is-disconnected {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.race-dashboard__map-section {
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.race-dashboard__map {
+  width: 100%;
+  height: min(60vh, 560px);
+  min-height: 360px;
+}
+
+.race-dashboard__vehicles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.race-dashboard__vehicle {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.race-dashboard__vehicle-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.race-dashboard__vehicle-header h2 {
+  margin: 0;
+  color: var(--accent-amber);
+  font-size: 1.25rem;
+}
+
+.race-dashboard__vehicle-header time {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.race-dashboard__metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin: 0 0 1rem 0;
+}
+
+.race-dashboard__metrics div {
+  background: rgba(15, 23, 42, 0.6);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+}
+
+.race-dashboard__metrics dt {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.race-dashboard__metrics dd {
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.race-dashboard__coordinates {
+  margin: 0;
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  background: rgba(15, 23, 42, 0.8);
+  padding: 0.5rem;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.race-dashboard__empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--text-muted);
+  padding: 3rem;
+}
+
+@media (max-width: 600px) {
+  .race-dashboard {
+    padding: 1rem;
+  }
+
+  .race-dashboard__header {
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .race-dashboard__header h1 {
+    font-size: 1.4rem;
+  }
+
+  .race-dashboard__connection {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.7rem;
+  }
+
+  .race-dashboard__map {
+    min-height: 300px;
+  }
+}
+
+
+.race-dashboard__stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0 0 1.5rem;
+  padding: 0.85rem 1.25rem;
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 10px;
+}
+
+.race-dashboard__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.race-dashboard__stat-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.race-dashboard__stat-label svg {
+  width: 1rem;
+  height: 1rem;
+  color: var(--accent-amber);
+}
+
+.race-dashboard__stat strong {
+  color: var(--text-main);
+  font-size: 1.25rem;
+}
+
+.race-dashboard__stat strong small {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.race-dashboard__health {
+  width: fit-content;
+  border-radius: 9999px;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.85rem !important;
+}
+
+.race-dashboard__health.is-good {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.12);
+}
+
+.race-dashboard__health.is-fair {
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.12);
+}
+
+.race-dashboard__health.is-poor {
+  color: #f43f5e;
+  background: rgba(244, 63, 94, 0.12);
+}
+
+.race-dashboard__health.is-no-signal,
+.race-dashboard__health.is-no-data {
+  color: var(--text-muted);
+  background: rgba(148, 163, 184, 0.12);
+}
+
+.race-dashboard__health.is-excellent,
+.race-dashboard__health.is-good {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.14);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.22);
+}
+
+.race-dashboard__health.is-degraded {
+  color: #f43f5e;
+  background: rgba(244, 63, 94, 0.14);
+  box-shadow: 0 0 12px rgba(244, 63, 94, 0.22);
+}
+
+.race-dashboard__vehicle-title {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.race-dashboard__vehicle-status {
+  border-radius: 9999px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.race-dashboard__vehicle-status.is-active {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.12);
+}
+
+.race-dashboard__vehicle-status.is-inactive {
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.12);
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.16);
+}
+
+.race-dashboard__signal-meter {
+  display: block;
+  height: 4px;
+  margin-top: 0.45rem;
+  overflow: hidden;
+  border-radius: 9999px;
+  background: #334155;
+}
+
+.race-dashboard__signal-meter > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  transition: width 0.3s ease;
+}
+
+@media (max-width: 800px) {
+  .race-dashboard__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .race-dashboard__stats {
+    gap: 0.75rem;
+    padding: 0.75rem;
+  }
+
+  .race-dashboard__vehicle-header {
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .race-dashboard__vehicle-title {
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+}

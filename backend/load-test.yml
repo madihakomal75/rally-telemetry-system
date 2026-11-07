@@ -1,0 +1,26 @@
+config:
+  target: "http://127.0.0.1:3000"
+  socketio:
+    transports:
+      - websocket
+  processor: "./stress-test.js"
+  phases:
+    # Create 20 long-lived virtual users in the first second.
+    - duration: 1
+      arrivalRate: 20
+      maxVusers: 20
+
+scenarios:
+  - name: "20 Socket.IO vehicles at 10 Hz for 60 seconds"
+    engine: socketio
+    flow:
+      - function: "assignVehicleId"
+      - emit:
+          channel: "telemetry:stream"
+      - loop:
+          - function: "createTelemetryPacket"
+          - emit:
+              channel: "telemetry:submit"
+              data: "{{ packet }}"
+          - think: 0.1
+        count: 600
